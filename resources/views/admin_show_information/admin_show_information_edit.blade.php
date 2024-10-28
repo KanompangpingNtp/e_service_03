@@ -119,30 +119,16 @@
 
         <div class="row">
             <div class="mb-3 col-md-4">
-                <label for="complaintName" class="form-label">ชื่อเรื่องคำขอ</label>
+                <label for="complaintName" class="form-label">ยื่นคําร้องต่อ</label>
                 <input type="text" class="form-control" id="complaintName" name="complaintName" value="{{ old('complaintName', $form->submission_name) }}" placeholder="โปรดระบุ" required>
             </div>
         </div>
         <div class="col-md-7">
-            <label for="complaintDetails" class="form-label">ขอยื่นคำร้องต่อหน่วยงาน <span class="text-danger">*</span></label>
+            <label for="complaintDetails" class="form-label">เนื่องจาก<span class="text-danger">*</span></label>
             <textarea class="form-control" id="complaintDetails" name="complaintDetails" rows="3" placeholder="โปรดระบุ" required>{{ old('complaintDetails', $form->submission) }}</textarea>
         </div>
-
+{{--
         <br>
-
-        {{-- <div class="row">
-            <div class="col-md-2 mb-3">
-                <label for="documentNumber" class="form-label">จำนวนเอกสาร <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="documentNumber" name="documentNumber" value="{{ old('documentNumber', $form->document_count) }}" placeholder="โปรดระบุ" required>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-4">
-                <label for="fileUpload" class="form-label">ไฟล์แนบ</label>
-                <input type="file" class="form-control" id="fileUpload" name="fileUpload" >
-            </div>
-        </div> --}}
 
         <div class="row">
             <div class="col-md-2 mb-3">
@@ -176,7 +162,7 @@
                     container.appendChild(fileInput);
                 }
             }
-        </script>
+        </script> --}}
 
         <br>
 

@@ -28,9 +28,9 @@
                 <td>{{ $form->user ? $form->user->fullname : 'ผู้ใช้งานทั่วไป' }}</td>
                 <td>{{ $form->user_name_verifier }}</td>
                 <td>
-                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#submitModal-{{ $form->id }}">
+                    {{-- <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#submitModal-{{ $form->id }}">
                         <i class="bi bi-filetype-pdf"></i>
-                    </button>
+                    </button> --}}
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#replyModal-{{ $form->id }}">
                         <i class="bi bi-reply"></i>
                     </button>

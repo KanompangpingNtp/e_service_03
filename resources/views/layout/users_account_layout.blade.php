@@ -16,7 +16,7 @@
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <span>
                             <a href="{{ route('userAccount')}}" style="text-decoration: none; color: black;">
-                                <h3>E-Service</h3>
+                                <h3>คําร้องทั่วไป (พ่นหมอกควัน)</h3>
                             </a>
                         </span>
                         <div class="d-flex gap-2">

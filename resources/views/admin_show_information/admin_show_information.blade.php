@@ -126,14 +126,14 @@
                     <span style="color: black;">preview</span> <a href="{{ route('exportPDF', $form->id) }}" class="btn btn-danger btn-sm" target="_blank">
                         <i class="bi bi-file-earmark-pdf"></i>
                     </a>
-                    <br>
+                    {{-- <br>
                     <br>
                     <span style="color: black;">ไฟล์แนบ </span>
                     @foreach($form->attachments as $attachment)
                     <span class="d-inline me-2">
                         <a href="{{ asset($attachment->file_path) }}" target="_blank">{{ basename($attachment->file_path) }}</a>
                     </span>
-                    @endforeach
+                    @endforeach --}}
 
                 </div>
                 <div class="modal-footer d-flex justify-content-between">
