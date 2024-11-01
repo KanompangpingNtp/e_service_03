@@ -55,4 +55,8 @@ Route::group(['middleware' => 'role:admin'], function () {
 Route::group(['middleware' => 'role:user'], function () {
     Route::get('/userAccount', [FormController::class, 'userAccount'])->name('userAccount');
     Route::get('/user/forms', [ShowinformationController::class, 'showinformationUser'])->name('showinformationUser');
+    Route::get('/user/forms/export/{id}', [ShowinformationController::class, 'userexportPDF'])->name('userexportPDF');
+    Route::post('/user/forms/{form}/reply', [FormController::class, 'userreply'])->name('userreply');
+    Route::get('/user/show-information/edit/{id}', [ShowinformationController::class, 'showinuserformationEdit'])->name('showinuserformationEdit');
+    Route::post('/user/form/update/{id}', [FormController::class, 'userformsEdit'])->name('userformsEdit');
 });

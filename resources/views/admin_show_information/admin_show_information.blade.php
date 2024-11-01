@@ -65,7 +65,7 @@
     @foreach($forms as $form)
     <!-- Modal -->
     <div class="modal fade" id="replyModal-{{ $form->id }}" tabindex="-1" aria-labelledby="replyModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="replyModalLabel">ตอบกลับฟอร์ม</h5>
@@ -77,6 +77,7 @@
                     <table class="table table-bordered">
                         <thead>
                             <tr class="text-center">
+                                <th>ผู้ตอบ</th>
                                 <th>วันที่ตอบกลับ</th>
                                 <th>ข้อความที่ตอบกลับ</th>
                             </tr>
@@ -84,6 +85,7 @@
                         <tbody>
                             @forelse($form->replyforms as $reply)
                             <tr class="text-center">
+                                <td>{{ $reply->user->fullname }}</td>
                                 <td>
                                     {{ $reply->created_at->timezone('Asia/Bangkok')->translatedFormat('d F') }} {{ $reply->created_at->year + 543 }}
                                     {{ $reply->created_at->format('H:i') }} น.

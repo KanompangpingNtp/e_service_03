@@ -212,6 +212,22 @@ class FormController extends Controller
 
         ReplyForm::create([
             'form_id' => $formId,
+            'user_id' => auth()->id(),
+            'message' => $request->message,
+        ]);
+
+        return redirect()->back()->with('success', 'ตอบกลับสำเร็จแล้ว!');
+    }
+
+    public function userreply(Request $request, $formId)
+    {
+        $request->validate([
+            'message' => 'required|string|max:1000',
+        ]);
+
+        ReplyForm::create([
+            'form_id' => $formId,
+            'user_id' => auth()->id(),
             'message' => $request->message,
         ]);
 
@@ -261,5 +277,60 @@ class FormController extends Controller
         $form->save();
 
         return redirect()->back()->with('success', 'คุณได้กดรับแบบฟอร์มเรียบร้อยแล้ว');
+    }
+
+    public function userformsEdit(Request $request, $id)
+    {
+        // ค้นหาฟอร์มที่ต้องการอัปเดต
+        $form = Form::findOrFail($id);
+
+        // ตรวจสอบความถูกต้องของข้อมูลฟอร์ม
+        $validatedData = $request->validate([
+            'day' => 'required|integer|between:1,31',
+            'month' => 'required|integer|between:1,12',
+            'year' => 'required|integer',
+            'writeAt' => 'required|string|max:255',
+            'salutation' => 'required|string',
+            'fullname' => 'required|string|max:255',
+            'age' => 'required|integer',
+            'occupation' => 'required|string|max:255',
+            'houseNo' => 'required|string|max:255',
+            'villageNo' => 'nullable|string|max:255',
+            'alley' => 'nullable|string|max:255',
+            'road' => 'nullable|string|max:255',
+            'subDistrict' => 'required|string|max:255',
+            'district' => 'required|string|max:255',
+            'province' => 'required|string|max:255',
+            'phone' => 'required|string|max:15',
+            'complaintName' => 'required|string|max:255',
+            'complaintDetails' => 'required|string',
+            // 'documentNumber' => 'required|integer',
+            // 'fileUpload.*' => 'nullable|file|mimes:pdf,doc,docx,jpeg,png|max:2048',
+        ]);
+
+        // อัปเดตข้อมูลฟอร์ม
+        $form->update([
+            'day' => $validatedData['day'],
+            'month' => $validatedData['month'],
+            'year' => $validatedData['year'],
+            'location' => $validatedData['writeAt'],
+            'salutation' => $validatedData['salutation'],
+            'fullname' => $validatedData['fullname'],
+            'age' => $validatedData['age'],
+            'occupation' => $validatedData['occupation'],
+            'house_no' => $validatedData['houseNo'],
+            'village_no' => $validatedData['villageNo'],
+            'alley' => $validatedData['alley'],
+            'road' => $validatedData['road'],
+            'sub_district' => $validatedData['subDistrict'],
+            'district' => $validatedData['district'],
+            'province' => $validatedData['province'],
+            'phone' => $validatedData['phone'],
+            'submission_name' => $validatedData['complaintName'],
+            'submission' => $validatedData['complaintDetails'],
+            // 'document_count' => $validatedData['documentNumber'],
+        ]);
+
+        return redirect()->back()->with('success', 'ข้อมูลฟอร์มถูกอัปเดตสำเร็จ');
     }
 }

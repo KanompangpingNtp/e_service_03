@@ -11,6 +11,7 @@ class ReplyForm extends Model
 
     protected $fillable = [
         'form_id',
+        'user_id',
         'message',
     ];
 
@@ -19,4 +20,8 @@ class ReplyForm extends Model
         return $this->belongsTo(Form::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
